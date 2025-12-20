@@ -41,7 +41,7 @@ export default function Home() {
               Team
             </a>
             <a href="#demo" className="text-sm font-medium hover:text-primary transition-colors">
-              <Button size="sm" className="ml-2 bg-accent text-accent-foreground hover:bg-accent/90">
+              <Button size="sm" className="ml-2 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-md">
                 Book a Demo
               </Button>
             </a>
@@ -66,12 +66,12 @@ export default function Home() {
                 Fixr uses AI to automate the essential processes that keep your service business running smoothly.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                <Button size="lg" className="text-base h-12 px-8 bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button size="lg" className="text-base h-12 px-8 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20">
                   Learn more
                 </Button>
                 <Button
                   variant="outline"
-                  className="text-base h-12 px-8 border-accent/50 text-foreground hover:bg-accent/10 hover:text-foreground"
+                  className="text-base h-12 px-8 border-accent/50 text-foreground hover:bg-accent/10 hover:text-foreground hover:border-accent/70 hover:shadow-sm"
                 >
                   Book a Demo
                 </Button>
@@ -460,10 +460,10 @@ export default function Home() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full h-12 text-base font-semibold bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full h-12 text-base font-semibold bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25 group"
                 >
                   Request Demo
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1" />
                 </Button>
               </form>
             </Card>
@@ -484,16 +484,16 @@ export default function Home() {
             <Button
               size="lg"
               variant="secondary"
-              className="text-base h-12 px-8 bg-background text-foreground hover:bg-background/90"
+              className="text-base h-12 px-8 bg-background text-foreground hover:bg-background/90 hover:shadow-lg group"
               onClick={() => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" })}
             >
               Book a Demo
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1" />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="text-base h-12 px-8 bg-transparent border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10"
+              className="text-base h-12 px-8 bg-transparent border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10 hover:border-accent-foreground/50 hover:shadow-sm"
               onClick={() => document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" })}
             >
               Learn more
