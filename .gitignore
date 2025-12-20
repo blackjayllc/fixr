@@ -41,14 +41,14 @@ next-env.d.ts
 
 # Downloaded assets (images, etc.)
 # Ignore downloaded/placeholder images
-public/*.jpg
-public/*.jpeg
+public/placeholder*.jpg
+public/placeholder*.jpeg
 public/placeholder*.png
 public/placeholder*.svg
-public/professional-*.jpg
 
-# Keep important app icons
+# Keep important app icons and hero image
 !public/icon*.png
 !public/icon*.svg
 !public/apple-icon.png
+!public/professional-hvac-technician-working-on-air-condit.jpg
 

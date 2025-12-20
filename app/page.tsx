@@ -78,13 +78,18 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square relative rounded-2xl overflow-hidden border border-accent/20">
+              <div className="aspect-square relative rounded-2xl overflow-hidden border border-accent/20 bg-accent/5">
                 <Image
                   src="/professional-hvac-technician-working-on-air-condit.jpg"
                   alt="Professional service technician at work"
                   fill
                   className="object-cover"
                   priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  unoptimized={true}
+                  onError={(e) => {
+                    console.error("Image failed to load:", e)
+                  }}
                 />
               </div>
             </div>
@@ -147,7 +152,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1 bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl p-12 border border-accent/20 flex items-center justify-center min-h-[400px]">
                 <div className="text-center">
-                  <Globe className="h-24 w-24 text-accent/60 mx-auto mb-4" />
+                  <Globe className="h-24 w-24 text-accent mx-auto mb-4" />
                   <p className="text-sm text-muted-foreground">WebPilot Dashboard</p>
                 </div>
               </div>
@@ -218,7 +223,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1 bg-gradient-to-br from-chart-4/5 to-chart-4/10 rounded-2xl p-12 border border-chart-4/10 flex items-center justify-center min-h-[400px]">
                 <div className="text-center">
-                  <Users className="h-24 w-24 text-chart-4/40 mx-auto mb-4" />
+                  <Users className="h-24 w-24 text-chart-4 mx-auto mb-4" />
                   <p className="text-sm text-muted-foreground">ClientHub CRM</p>
                 </div>
               </div>
