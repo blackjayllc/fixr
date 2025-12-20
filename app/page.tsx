@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -40,7 +41,7 @@ export default function Home() {
               Team
             </a>
             <a href="#demo" className="text-sm font-medium hover:text-primary transition-colors">
-              <Button size="sm" className="ml-2">
+              <Button size="sm" className="ml-2 bg-accent text-accent-foreground hover:bg-accent/90">
                 Book a Demo
               </Button>
             </a>
@@ -78,10 +79,12 @@ export default function Home() {
             </div>
             <div className="relative">
               <div className="aspect-square relative rounded-2xl overflow-hidden border border-accent/20">
-                <img
+                <Image
                   src="/professional-hvac-technician-working-on-air-condit.jpg"
                   alt="Professional service technician at work"
-                  className="object-cover w-full h-full"
+                  fill
+                  className="object-cover"
+                  priority
                 />
               </div>
             </div>
