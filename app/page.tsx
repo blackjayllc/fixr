@@ -31,13 +31,13 @@ export default function Home() {
             <span className="text-xl font-bold text-foreground">Fixr</span>
           </div>
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#solutions" className="text-sm font-medium hover:text-primary transition-colors">
+            <a href="#solutions" className="text-sm font-medium hover:text-accent transition-colors">
               Solutions
             </a>
-            <a href="#pricing" className="text-sm font-medium hover:text-primary transition-colors">
+            <a href="#pricing" className="text-sm font-medium hover:text-accent transition-colors">
               Pricing
             </a>
-            <a href="#team" className="text-sm font-medium hover:text-primary transition-colors">
+            <a href="#team" className="text-sm font-medium hover:text-accent transition-colors">
               Team
             </a>
             <a href="#demo" className="text-sm font-medium hover:text-primary transition-colors">
