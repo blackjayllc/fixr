@@ -62,16 +62,15 @@ export default function Home() {
                 AI workflow automation for service businesses
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-10 text-balance leading-relaxed">
-                Fixr enables service teams to automate the processes that keep business running, with AI.
+                Fixr uses AI to automate the essential processes that keep your service business running smoothly.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
                 <Button size="lg" className="text-base h-12 px-8 bg-accent text-accent-foreground hover:bg-accent/90">
                   Learn more
                 </Button>
                 <Button
-                  size="lg"
                   variant="outline"
-                  className="text-base h-12 px-8 bg-transparent border-accent/50 text-foreground hover:bg-accent/10"
+                  className="text-base h-12 px-8 border-accent/50 text-foreground hover:bg-accent/10 hover:text-foreground"
                 >
                   Book a Demo
                 </Button>
@@ -111,10 +110,10 @@ export default function Home() {
             {/* VoicePilot */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 text-primary rounded-xl mb-6">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-accent/10 text-accent rounded-xl mb-6">
                   <Phone className="h-7 w-7" />
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold mb-4">Answer every call with AI</h3>
+                <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Answer every call with AI</h3>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
                   VoicePilot's AI agents handle customer calls 24/7, answer questions, book appointments, and ensure no
                   revenue opportunity slips through the cracks.
@@ -134,7 +133,7 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-              <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-12 border border-primary/10 flex items-center justify-center min-h-[400px]">
+              <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl p-12 border border-accent/20 flex items-center justify-center min-h-[400px]">
                 <div className="text-center">
                   <Phone className="h-24 w-24 text-accent/60 mx-auto mb-4" />
                   <p className="text-sm text-muted-foreground">VoicePilot Interface</p>
@@ -335,22 +334,22 @@ export default function Home() {
               </Card>
               <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
                 <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-accent">CL</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground">Colin Lawless</h3>
-                <p className="text-sm text-accent mb-3">Co-Founder, CTO</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Building scalable AI infrastructure and automation systems.
-                </p>
-              </Card>
-              <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
-                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center">
                   <span className="text-3xl font-bold text-accent">MM</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-foreground">Michael McCaffrey</h3>
                 <p className="text-sm text-accent mb-3">Co-Founder, COO</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Scaling operations and ensuring customer success.
+                </p>
+              </Card>
+              <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
+                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center">
+                  <span className="text-3xl font-bold text-accent">CL</span>
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-foreground">Colin Lawless</h3>
+                <p className="text-sm text-accent mb-3">Co-Founder, CTO</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Building scalable AI infrastructure and automation systems.
                 </p>
               </Card>
               <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
@@ -372,17 +371,17 @@ export default function Home() {
       <section id="demo" className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Book a Demo</h2>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 See how Fixr can transform your service business with AI automation
               </p>
             </div>
-            <Card className="p-8 bg-background border-border">
+            <Card className="p-8 md:p-10 bg-background border-border shadow-lg">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-foreground">
+                  <div className="space-y-2.5">
+                    <label htmlFor="name" className="text-sm font-semibold text-foreground block">
                       Name *
                     </label>
                     <Input
@@ -391,11 +390,11 @@ export default function Home() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="bg-card border-border text-foreground"
+                      className="bg-card border-border/60 text-foreground h-11 focus-visible:border-accent focus-visible:ring-accent/20"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-foreground">
+                  <div className="space-y-2.5">
+                    <label htmlFor="email" className="text-sm font-semibold text-foreground block">
                       Email *
                     </label>
                     <Input
@@ -405,13 +404,13 @@ export default function Home() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="bg-card border-border text-foreground"
+                      className="bg-card border-border/60 text-foreground h-11 focus-visible:border-accent focus-visible:ring-accent/20"
                     />
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-medium text-foreground">
+                  <div className="space-y-2.5">
+                    <label htmlFor="company" className="text-sm font-semibold text-foreground block">
                       Company *
                     </label>
                     <Input
@@ -420,11 +419,11 @@ export default function Home() {
                       required
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="bg-card border-border text-foreground"
+                      className="bg-card border-border/60 text-foreground h-11 focus-visible:border-accent focus-visible:ring-accent/20"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium text-foreground">
+                  <div className="space-y-2.5">
+                    <label htmlFor="phone" className="text-sm font-semibold text-foreground block">
                       Phone Number
                     </label>
                     <Input
@@ -433,26 +432,30 @@ export default function Home() {
                       placeholder="(555) 123-4567"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="bg-card border-border text-foreground"
+                      className="bg-card border-border/60 text-foreground h-11 focus-visible:border-accent focus-visible:ring-accent/20"
                     />
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium text-foreground">
+                <div className="space-y-2.5">
+                  <label htmlFor="message" className="text-sm font-semibold text-foreground block">
                     Tell us about your business
                   </label>
                   <Textarea
                     id="message"
                     placeholder="Tell us about your business needs and how many calls you receive daily..."
-                    rows={4}
+                    rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="bg-card border-border text-foreground resize-none"
+                    className="bg-card border-border/60 text-foreground resize-none focus-visible:border-accent focus-visible:ring-accent/20"
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full">
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full h-12 text-base font-semibold bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                >
                   Request Demo
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </form>
             </Card>
