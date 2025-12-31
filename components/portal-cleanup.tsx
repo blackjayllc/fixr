@@ -17,7 +17,7 @@ export function PortalCleanup() {
           (portal.getBoundingClientRect().width === 0 &&
             portal.getBoundingClientRect().height === 0)
         ) {
-          portal.style.display = 'none'
+          ;(portal as HTMLElement).style.display = 'none'
         }
       })
     }
@@ -43,4 +43,6 @@ export function PortalCleanup() {
 
   return null
 }
+
+
 
