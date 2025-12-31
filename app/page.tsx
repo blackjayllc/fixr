@@ -313,7 +313,7 @@ export default function Home() {
                   <div className="h-[12%]"></div>
                   <div className="flex-1 w-full">
                     <Image
-                      src="/michael.png"
+                      src="/Michael.png"
                       alt="Michael McCaffrey"
                       width={180}
                       height={180}
@@ -353,7 +353,7 @@ export default function Home() {
                   <div className="h-[12%]"></div>
                   <div className="flex-1 w-full">
                     <Image
-                      src="/anthony.png"
+                      src="/Anthony.png"
                       alt="Anthony Gold"
                       width={180}
                       height={180}
