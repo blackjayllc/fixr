@@ -10,14 +10,40 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Phone, Zap, Globe, Star, Users, ArrowRight, CheckCircle } from "lucide-react"
+import { toast } from "sonner"
 
 export default function Home() {
   const [formData, setFormData] = useState({ name: "", email: "", company: "", phone: "", message: "" })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Demo request:", formData)
-    // Handle form submission
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message')
+      }
+
+      toast.success("Demo request sent successfully! We'll be in touch soon.")
+      // Reset form
+      setFormData({ name: "", email: "", company: "", phone: "", message: "" })
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      toast.error(error instanceof Error ? error.message : 'Failed to send message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -458,10 +484,11 @@ export default function Home() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full h-12 text-base font-semibold bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25 group"
+                  disabled={isSubmitting}
+                  className="w-full h-12 text-base font-semibold bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25 group disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Request Demo
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1" />
+                  {isSubmitting ? 'Sending...' : 'Request Demo'}
+                  {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1" />}
                 </Button>
               </form>
             </Card>
