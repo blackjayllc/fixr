@@ -511,8 +511,8 @@ export default function Home() {
             </Link>
             <div className="text-sm text-muted-foreground">© 2025 Fixr Solutions. All rights reserved.</div>
             <div className="text-sm font-medium">
-              <a href="mailto:max@fixrsolutions.com" className="text-foreground hover:text-accent transition-colors">
-                max@fixrsolutions.com
+              <a href="mailto:contact@fixrsolutions.com" className="text-foreground hover:text-accent transition-colors">
+                contact@fixrsolutions.com
               </a>
             </div>
           </div>
