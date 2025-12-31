@@ -121,7 +121,7 @@ This email was sent from the Fixr Solutions intake form.
     const mailOptions = {
       from: process.env.GMAIL_USER,
       to: process.env.RECIPIENT_EMAIL,
-      subject: `New Demo Request from ${name} - ${company}`,
+      subject: `FIXR Solutions - New Demo Request from ${name} - ${company}`,
       html: emailHtml,
       text: emailText,
       replyTo: email,
