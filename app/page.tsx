@@ -23,25 +23,28 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="container mx-auto px-6 h-32 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-8 w-8 bg-accent rounded-lg flex items-center justify-center">
-              <span className="text-accent-foreground font-bold">F</span>
-            </div>
-            <span className="text-xl font-bold text-foreground">Fixr</span>
+            <Image
+              src="/FIXR Full Black Logo.png"
+              alt="Fixr Logo"
+              width={360}
+              height={90}
+              unoptimized={true}
+            />
           </div>
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="#solutions" className="text-sm font-medium hover:text-accent transition-colors">
+          <nav className="hidden md:flex items-center gap-12">
+            <a href="#solutions" className="text-lg font-semibold hover:text-accent transition-colors">
               Solutions
             </a>
-            <a href="#pricing" className="text-sm font-medium hover:text-accent transition-colors">
+            <a href="#pricing" className="text-lg font-semibold hover:text-accent transition-colors">
               Pricing
             </a>
-            <a href="#team" className="text-sm font-medium hover:text-accent transition-colors">
+            <a href="#team" className="text-lg font-semibold hover:text-accent transition-colors">
               Team
             </a>
-            <a href="#demo" className="text-sm font-medium hover:text-primary transition-colors">
-              <Button size="sm" className="ml-2 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-md">
+            <a href="#demo" className="text-lg font-semibold hover:text-primary transition-colors">
+              <Button size="lg" className="ml-2 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-md">
                 Book a Demo
               </Button>
             </a>
@@ -59,7 +62,7 @@ export default function Home() {
                 <Zap className="h-3.5 w-3.5" />
                 Blue Collar Automation Starts Here
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance leading-tight text-foreground">
+              <h1 className="text-5xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance leading-tight text-foreground">
                 AI workflow automation for service businesses
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-10 text-balance leading-relaxed">
@@ -85,7 +88,7 @@ export default function Home() {
                   fill
                   className="object-cover"
                   priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 576px) 19vw, (max-width: 768px) 17vw, (max-width: 1024px) 13vw, 8vw"
                   unoptimized={true}
                   onError={(e) => {
                     console.error("Image failed to load:", e)
@@ -101,7 +104,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance text-foreground">
-              Your new business command center
+              Your Digital Toolbox
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed text-pretty max-w-3xl">
               From AI-powered call answering and professional websites to automated review requests and customer relationship
@@ -329,72 +332,84 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Built by experts</h2>
               <p className="text-xl text-muted-foreground">A team dedicated to transforming service businesses</p>
             </div>
-            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
-              <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
-                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="/colin.png"
-                    alt="Max Svejda"
-                    width={96}
-                    height={96}
-                    className="w-full h-full object-cover rounded-full"
-                    unoptimized={true}
-                  />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="p-6 md:p-8 text-center hover:shadow-lg transition-all bg-card border-border">
+                <div className="w-40 h-[200px] md:w-[180px] md:h-[220px] bg-gradient-to-br from-accent/20 to-accent/5 rounded-lg mx-auto mb-6 flex flex-col overflow-hidden">
+                  <div className="h-[12%]"></div>
+                  <div className="flex-1 w-full">
+                    <Image
+                      src="/max.png"
+                      alt="Max Svejda"
+                      width={180}
+                      height={180}
+                      className="w-full h-full object-cover rounded-lg"
+                      unoptimized={true}
+                    />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground">Max Svejda</h3>
-                <p className="text-sm text-accent mb-3">Co-Founder, CEO</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <h3 className="text-2xl md:text-3xl font-bold mb-1 text-foreground">Max Svejda</h3>
+                <p className="text-lg md:text-xl font-bold text-accent mb-2">Co-Founder, CEO</p>
+                <p className="text-lg md:text-xl font-semibold text-muted-foreground leading-tight">
                   Leading product vision and strategy for blue collar automation.
                 </p>
               </Card>
-              <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
-                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="/colin.png"
-                    alt="Michael McCaffrey"
-                    width={96}
-                    height={96}
-                    className="w-full h-full object-cover rounded-full"
-                    unoptimized={true}
-                  />
+              <Card className="p-6 md:p-8 text-center hover:shadow-lg transition-all bg-card border-border">
+                <div className="w-40 h-[200px] md:w-[180px] md:h-[220px] bg-gradient-to-br from-accent/20 to-accent/5 rounded-lg mx-auto mb-6 flex flex-col overflow-hidden">
+                  <div className="h-[12%]"></div>
+                  <div className="flex-1 w-full">
+                    <Image
+                      src="/michael.png"
+                      alt="Michael McCaffrey"
+                      width={180}
+                      height={180}
+                      className="w-full h-full object-cover rounded-lg"
+                      unoptimized={true}
+                    />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground">Michael McCaffrey</h3>
-                <p className="text-sm text-accent mb-3">Co-Founder, COO</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <h3 className="text-2xl md:text-3xl font-bold mb-1 text-foreground">Michael McCaffrey</h3>
+                <p className="text-lg md:text-xl font-bold text-accent mb-2">Co-Founder, COO</p>
+                <p className="text-lg md:text-xl font-semibold text-muted-foreground leading-tight">
                   Scaling operations and ensuring customer success.
                 </p>
               </Card>
-              <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
-                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="/colin.png"
-                    alt="Colin Lawless"
-                    width={96}
-                    height={96}
-                    className="w-full h-full object-cover rounded-full"
-                    unoptimized={true}
-                  />
+              <Card className="p-6 md:p-8 text-center hover:shadow-lg transition-all bg-card border-border">
+                <div className="w-40 h-[200px] md:w-[180px] md:h-[220px] bg-gradient-to-br from-accent/20 to-accent/5 rounded-lg mx-auto mb-6 flex flex-col overflow-hidden">
+                  <div className="h-[12%]"></div>
+                  <div className="flex-1 w-full">
+                    <Image
+                      src="/colin.png"
+                      alt="Colin Lawless"
+                      width={180}
+                      height={180}
+                      className="w-full h-full object-cover rounded-lg"
+                      unoptimized={true}
+                    />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground">Colin Lawless</h3>
-                <p className="text-sm text-accent mb-3">Co-Founder, CTO</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <h3 className="text-2xl md:text-3xl font-bold mb-1 text-foreground">Colin Lawless</h3>
+                <p className="text-lg md:text-xl font-bold text-accent mb-2">Co-Founder, CTO</p>
+                <p className="text-lg md:text-xl font-semibold text-muted-foreground leading-tight">
                   Building scalable AI infrastructure and automation systems.
                 </p>
               </Card>
-              <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
-                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
-                  <Image
-                    src="/colin.png"
-                    alt="Anthony Gold"
-                    width={96}
-                    height={96}
-                    className="w-full h-full object-cover rounded-full"
-                    unoptimized={true}
-                  />
+              <Card className="p-6 md:p-8 text-center hover:shadow-lg transition-all bg-card border-border">
+                <div className="w-40 h-[200px] md:w-[180px] md:h-[220px] bg-gradient-to-br from-accent/20 to-accent/5 rounded-lg mx-auto mb-6 flex flex-col overflow-hidden">
+                  <div className="h-[12%]"></div>
+                  <div className="flex-1 w-full">
+                    <Image
+                      src="/anthony.png"
+                      alt="Anthony Gold"
+                      width={180}
+                      height={180}
+                      className="w-full h-full object-cover rounded-lg"
+                      unoptimized={true}
+                    />
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground">Anthony Gold</h3>
-                <p className="text-sm text-accent mb-3">Chief Trade Advisor</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <h3 className="text-2xl md:text-3xl font-bold mb-1 text-foreground">Anthony Gold</h3>
+                <p className="text-lg md:text-xl font-bold text-accent mb-2">Chief Trade Advisor</p>
+                <p className="text-lg md:text-xl font-semibold text-muted-foreground leading-tight">
                   Bringing real-world trade expertise to product development.
                 </p>
               </Card>
