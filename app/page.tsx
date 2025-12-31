@@ -61,19 +61,19 @@ export default function Home() {
                 Blue Collar Automation Starts Here
               </div>
               <h1 className="text-5xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance leading-tight text-foreground">
-                AI workflow automation for service businesses
+                Don't let your trade business fall behind in the digital age
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-10 text-balance leading-relaxed">
-                Fixr uses AI to automate the essential processes that keep your service business running smoothly.
+                We automate the leads while you operate your business
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                <Button size="lg" className="text-base h-12 px-8 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20">
-                  Learn more
-                </Button>
                 <Button
                   variant="outline"
                   className="text-base h-12 px-8 border-accent/50 text-foreground hover:bg-accent/10 hover:text-foreground hover:border-accent/70 hover:shadow-sm"
                 >
+                  Learn more
+                </Button>
+                <Button size="lg" className="text-base h-12 px-8 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20">
                   Book a Demo
                 </Button>
               </div>
@@ -124,7 +124,7 @@ export default function Home() {
               <div className="p-8 bg-card">
                 <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Answer every call with AI</h3>
                 <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                  VoicePilot's AI agents handle customer calls 24/7, answer questions, book appointments, and ensure no
+                  VoicePilot AI handles customer calls 24/7, answers questions, books appointments, and ensures no
                   revenue opportunity slips through the cracks.
                 </p>
                 <ul className="space-y-3">
@@ -216,32 +216,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">{/* Pricing content here */}</div>
-        </div>
-      </section>
 
       {/* Results Section */}
       <section className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className="mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Real business results</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">The Hidden Cost of No Answer</h2>
             </div>
 
             <Card className="p-8 md:p-12 bg-background border-border">
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div>
-                  <h3 className="text-2xl font-bold mb-4 text-foreground">The Hidden Cost of No Answer</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-foreground">Every missed call is a lost opportunity</h3>
                   <p className="text-muted-foreground leading-relaxed">
                     Trades lose 20 - 30% of potential revenue due to missed calls and unbooked appointments.
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2" />
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-red-500 text-3xl">-</span>
                     <div>
                       <div className="font-bold text-2xl text-red-500 mb-1">$10K-$20K</div>
                       <div className="text-sm text-muted-foreground">
@@ -249,8 +243,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2" />
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-red-500 text-3xl">-</span>
                     <div>
                       <div className="font-bold text-2xl text-red-500 mb-1">$25K-$60K</div>
                       <div className="text-sm text-muted-foreground">
@@ -286,8 +280,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Built by experts</h2>
-              <p className="text-xl text-muted-foreground">A team dedicated to transforming service businesses</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Meet The Fixrs</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card className="p-6 md:p-8 text-center hover:shadow-lg transition-all bg-card border-border">
