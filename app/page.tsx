@@ -56,7 +56,7 @@ export default function Home() {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-full mt-4 lg:mt-0 text-sm font-medium text-accent">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-full mt-4 lg:mt-0 lg:mb-6 text-sm font-medium text-accent">
                 <Zap className="h-3.5 w-3.5" />
                 Blue Collar Automation Starts Here
               </div>
