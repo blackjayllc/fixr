@@ -24,8 +24,8 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto px-6 h-32 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+        <div className="container mx-auto px-6 h-32 flex items-center justify-center md:justify-between">
+          <Link href="/" className="flex items-center gap-3 translate-x-10 md:translate-x-0">
             <Image
               src="/FIXR Full Black Logo.png"
               alt="Fixr Logo"
@@ -51,12 +51,12 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background">
+      <section className="pt-32 pb-24 md:py-32 lg:py-40 relative overflow-hidden bg-background">
         <div className="absolute inset-0 bg-grid-pattern" />
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-full mb-8 text-sm font-medium text-accent">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-full mt-4 text-sm font-medium text-accent">
                 <Zap className="h-3.5 w-3.5" />
                 Blue Collar Automation Starts Here
               </div>
@@ -499,7 +499,7 @@ export default function Home() {
       <footer className="py-12 border-t border-border bg-card">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <Link href="/" className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3 ml-8 md:ml-0">
               <Image
                 src="/FIXR Full Black Logo.png"
                 alt="Fixr Logo"
