@@ -4,6 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -24,7 +25,7 @@ export default function Home() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto px-6 h-32 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src="/FIXR Full Black Logo.png"
               alt="Fixr Logo"
@@ -32,7 +33,7 @@ export default function Home() {
               height={90}
               unoptimized={true}
             />
-          </div>
+          </Link>
           <nav className="hidden md:flex items-center gap-12">
             <a href="#solutions" className="text-lg font-semibold hover:text-accent transition-colors">
               Products
@@ -111,11 +112,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Solutions Section */}
-      <section id="solutions" className="py-24 bg-background">
+      {/* Products Section */}
+      <section id="products" className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">Our product stack</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground">Our Products</h2>
           </div>
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2">
@@ -493,7 +494,7 @@ export default function Home() {
               size="lg"
               variant="outline"
               className="text-base h-12 px-8 bg-transparent border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10 hover:border-accent-foreground/50 hover:shadow-sm"
-              onClick={() => document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })}
             >
               Learn more
             </Button>
@@ -505,16 +506,20 @@ export default function Home() {
       <footer className="py-12 border-t border-border bg-card">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="h-8 w-8 bg-accent rounded-lg flex items-center justify-center">
-                <span className="text-accent-foreground font-bold">F</span>
-              </div>
-              <span className="font-bold text-foreground">Fixr Solutions</span>
-            </div>
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/FIXR Full Black Logo.png"
+                alt="Fixr Logo"
+                width={360}
+                height={90}
+                unoptimized={true}
+                className="h-32 w-auto"
+              />
+            </Link>
             <div className="text-sm text-muted-foreground">© 2025 Fixr Solutions. All rights reserved.</div>
             <div className="text-sm font-medium">
-              <a href="mailto:info@fixrsolutions.com" className="text-foreground hover:text-accent transition-colors">
-                info@fixrsolutions.com
+              <a href="mailto:max@fixrsolutions.com" className="text-foreground hover:text-accent transition-colors">
+                max@fixrsolutions.com
               </a>
             </div>
           </div>
