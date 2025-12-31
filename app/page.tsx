@@ -35,10 +35,7 @@ export default function Home() {
           </div>
           <nav className="hidden md:flex items-center gap-12">
             <a href="#solutions" className="text-lg font-semibold hover:text-accent transition-colors">
-              Solutions
-            </a>
-            <a href="#pricing" className="text-lg font-semibold hover:text-accent transition-colors">
-              Pricing
+              Products
             </a>
             <a href="#team" className="text-lg font-semibold hover:text-accent transition-colors">
               Team
@@ -117,140 +114,99 @@ export default function Home() {
       {/* Solutions Section */}
       <section id="solutions" className="py-24 bg-background">
         <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto space-y-32">
-            {/* VoicePilot */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-accent/10 text-accent rounded-xl mb-6">
-                  <Phone className="h-7 w-7" />
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Answer every call with AI</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+          <div className="max-w-6xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground">Our product stack</h2>
+          </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2">
+              {/* VoicePilot */}
+              <div className="p-8 bg-card">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Answer every call with AI</h3>
+                <p className="text-base text-muted-foreground leading-relaxed mb-6">
                   VoicePilot's AI agents handle customer calls 24/7, answer questions, book appointments, and ensure no
                   revenue opportunity slips through the cracks.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-1" />
-                    <span className="text-muted-foreground">24/7 automated call answering and routing</span>
+                    <span className="text-sm text-muted-foreground">24/7 automated call answering and routing</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Intelligent customer inquiry handling</span>
+                    <span className="text-sm text-muted-foreground">Intelligent customer inquiry handling</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Automated appointment reminders</span>
+                    <span className="text-sm text-muted-foreground">Automated appointment reminders</span>
                   </li>
                 </ul>
               </div>
-              <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl p-12 border border-accent/20 flex items-center justify-center min-h-[400px]">
-                <div className="text-center">
-                  <Phone className="h-24 w-24 text-accent/60 mx-auto mb-4" />
-                  <p className="text-sm text-muted-foreground">VoicePilot Interface</p>
-                </div>
-              </div>
-            </div>
 
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="order-2 md:order-1 bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl p-12 border border-accent/20 flex items-center justify-center min-h-[400px]">
-                <div className="text-center">
-                  <Globe className="h-24 w-24 text-accent mx-auto mb-4" />
-                  <p className="text-sm text-muted-foreground">WebPilot Dashboard</p>
-                </div>
-              </div>
-              <div className="order-1 md:order-2">
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-accent/10 text-accent rounded-xl mb-6">
-                  <Globe className="h-7 w-7" />
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Modern websites that convert</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              {/* WebPilot */}
+              <div className="p-8 bg-white">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Modern websites that convert</h3>
+                <p className="text-base text-muted-foreground leading-relaxed mb-6">
                   WebPilot creates professional, mobile-optimized websites for your business with automated SEO, lead
                   capture forms, and service showcase pages.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Professional website templates for service businesses</span>
+                    <span className="text-sm text-muted-foreground">Professional website templates for service businesses</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Built-in SEO optimization and local search</span>
+                    <span className="text-sm text-muted-foreground">Built-in SEO optimization and local search</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Lead capture forms and quote requests</span>
+                    <span className="text-sm text-muted-foreground">Lead capture forms and quote requests</span>
                   </li>
                 </ul>
               </div>
-            </div>
 
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-chart-3/20 text-accent rounded-xl mb-6">
-                  <Star className="h-7 w-7" />
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Build your 5-star reputation</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              {/* ReviewPilot */}
+              <div className="p-8 bg-white">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Build your 5-star reputation</h3>
+                <p className="text-base text-muted-foreground leading-relaxed mb-6">
                   ReviewPilot automates Google review requests after every job, helping you build a strong online rating
                   that attracts more customers.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Automated review requests via text and email</span>
+                    <span className="text-sm text-muted-foreground">Automated review requests via text and email</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Smart timing for maximum response rates</span>
+                    <span className="text-sm text-muted-foreground">Smart timing for maximum response rates</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Review monitoring and response templates</span>
+                    <span className="text-sm text-muted-foreground">Review monitoring and response templates</span>
                   </li>
                 </ul>
               </div>
-              <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-2xl p-12 border border-accent/20 flex items-center justify-center min-h-[400px]">
-                <div className="text-center">
-                  <div className="flex items-center justify-center gap-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="h-12 w-12 text-accent fill-accent" />
-                    ))}
-                  </div>
-                  <p className="text-sm text-muted-foreground">ReviewPilot System</p>
-                </div>
-              </div>
-            </div>
 
-            {/* ClientHub */}
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="order-2 md:order-1 bg-gradient-to-br from-chart-4/5 to-chart-4/10 rounded-2xl p-12 border border-chart-4/10 flex items-center justify-center min-h-[400px]">
-                <div className="text-center">
-                  <Users className="h-24 w-24 text-chart-4 mx-auto mb-4" />
-                  <p className="text-sm text-muted-foreground">ClientHub CRM</p>
-                </div>
-              </div>
-              <div className="order-1 md:order-2">
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-chart-4/10 text-chart-4 rounded-xl mb-6">
-                  <Users className="h-7 w-7" />
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold mb-4">Manage every customer relationship</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              {/* ClientHub */}
+              <div className="p-8 bg-card">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Manage every customer relationship</h3>
+                <p className="text-base text-muted-foreground leading-relaxed mb-6">
                   ClientHub provides centralized CRM support for managing client data, communications, and engagement
                   history to help your team nurture relationships.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-chart-4 shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Centralized customer database</span>
+                    <span className="text-sm text-muted-foreground">Centralized customer database</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-chart-4 shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Communication history tracking</span>
+                    <span className="text-sm text-muted-foreground">Communication history tracking</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-chart-4 shrink-0 mt-1" />
-                    <span className="text-muted-foreground">Automated follow-up sequences</span>
+                    <span className="text-sm text-muted-foreground">Automated follow-up sequences</span>
                   </li>
                 </ul>
               </div>
@@ -279,23 +235,23 @@ export default function Home() {
                 <div>
                   <h3 className="text-2xl font-bold mb-4 text-foreground">The Hidden Cost of No Answer</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Service businesses lose 20–30% of potential revenue due to missed calls and unbooked appointments.
+                    Trades lose 20 - 30% of potential revenue due to missed calls and unbooked appointments.
                   </p>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-accent rounded-full mt-2" />
+                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2" />
                     <div>
-                      <div className="font-bold text-2xl text-accent mb-1">$10K–$20K</div>
+                      <div className="font-bold text-2xl text-red-500 mb-1">$10K-$20K</div>
                       <div className="text-sm text-muted-foreground">
                         Small businesses (1-5 employees) lost per year
                       </div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-accent rounded-full mt-2" />
+                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2" />
                     <div>
-                      <div className="font-bold text-2xl text-accent mb-1">$25K–$60K</div>
+                      <div className="font-bold text-2xl text-red-500 mb-1">$25K-$60K</div>
                       <div className="text-sm text-muted-foreground">
                         Medium businesses (6-20 employees) lost per year
                       </div>
@@ -304,7 +260,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="border-t border-border pt-8">
+              {/*<div className="border-t border-border pt-8">
                 <p className="text-lg text-muted-foreground italic leading-relaxed mb-6">
                   "Before Fixr, we were missing 3-4 calls per day during busy seasons. Now, every call gets answered,
                   scheduled, and followed up automatically. We've recovered over $30K in revenue this year alone."
@@ -318,7 +274,7 @@ export default function Home() {
                     <div className="text-sm text-muted-foreground">Owner, Davis HVAC Solutions</div>
                   </div>
                 </div>
-              </div>
+              </div>*/}
             </Card>
           </div>
         </div>
