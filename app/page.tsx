@@ -104,8 +104,8 @@ export default function Home() {
               Your new business command center
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed text-pretty max-w-3xl">
-              Still managing calls in spreadsheets and losing revenue? With Fixr, you can automate end-to-end processes
-              that handle customer calls, job scheduling, invoicing, and follow-ups.
+              From AI-powered call answering and professional websites to automated review requests and customer relationship
+              management, Fixr replaces spreadsheets with intelligent automation that captures every revenue opportunity.
             </p>
           </div>
         </div>
@@ -450,7 +450,7 @@ export default function Home() {
                   </label>
                   <Textarea
                     id="message"
-                    placeholder="Tell us about your business needs and how many calls you receive daily..."
+                    placeholder="Tell us about your business needs and current challenges..."
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
