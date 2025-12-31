@@ -17,24 +17,7 @@ export const metadata: Metadata = {
   keywords:
     "HVAC software, plumbing automation, electrical business tools, contractor CRM, service business automation",
   icons: {
-    icon: [
-      {
-        url: "/FIXR Orange F Logo.ico",
-        type: "image/x-icon",
-      },
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
+    icon: "/favicon.ico",
     apple: "/apple-icon.png",
   },
 }
