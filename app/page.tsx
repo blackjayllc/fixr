@@ -331,8 +331,15 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
               <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
-                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-accent">MS</span>
+                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/colin.png"
+                    alt="Max Svejda"
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover rounded-full"
+                    unoptimized={true}
+                  />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-foreground">Max Svejda</h3>
                 <p className="text-sm text-accent mb-3">Co-Founder, CEO</p>
@@ -341,8 +348,15 @@ export default function Home() {
                 </p>
               </Card>
               <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
-                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-accent">MM</span>
+                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/colin.png"
+                    alt="Michael McCaffrey"
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover rounded-full"
+                    unoptimized={true}
+                  />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-foreground">Michael McCaffrey</h3>
                 <p className="text-sm text-accent mb-3">Co-Founder, COO</p>
@@ -351,8 +365,15 @@ export default function Home() {
                 </p>
               </Card>
               <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
-                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-accent">CL</span>
+                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/colin.png"
+                    alt="Colin Lawless"
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover rounded-full"
+                    unoptimized={true}
+                  />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-foreground">Colin Lawless</h3>
                 <p className="text-sm text-accent mb-3">Co-Founder, CTO</p>
@@ -361,8 +382,15 @@ export default function Home() {
                 </p>
               </Card>
               <Card className="p-8 text-center hover:shadow-lg transition-all bg-card border-border">
-                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-accent">AG</span>
+                <div className="w-24 h-24 bg-gradient-to-br from-accent/20 to-accent/5 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src="/colin.png"
+                    alt="Anthony Gold"
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover rounded-full"
+                    unoptimized={true}
+                  />
                 </div>
                 <h3 className="text-xl font-bold mb-2 text-foreground">Anthony Gold</h3>
                 <p className="text-sm text-accent mb-3">Chief Trade Advisor</p>
