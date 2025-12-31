@@ -4,25 +4,25 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated to black and orange color scheme matching pitch deck */
-  --background: oklch(0.15 0.01 30);
-  --foreground: oklch(0.97 0.005 80);
-  --card: oklch(0.18 0.01 30);
-  --card-foreground: oklch(0.97 0.005 80);
-  --popover: oklch(0.18 0.01 30);
-  --popover-foreground: oklch(0.97 0.005 80);
+  /* Light theme with dark text */
+  --background: oklch(0.99 0.002 240);
+  --foreground: oklch(0.15 0.01 30);
+  --card: oklch(0.98 0.005 80);
+  --card-foreground: oklch(0.15 0.01 30);
+  --popover: oklch(0.98 0.005 80);
+  --popover-foreground: oklch(0.15 0.01 30);
   --primary: oklch(0.1 0.01 30);
-  --primary-foreground: oklch(0.97 0.005 80);
+  --primary-foreground: oklch(0.99 0.002 240);
   --secondary: oklch(0.68 0.19 45);
-  --secondary-foreground: oklch(0.1 0.01 30);
-  --muted: oklch(0.22 0.01 30);
-  --muted-foreground: oklch(0.68 0.02 80);
+  --secondary-foreground: oklch(0.99 0.002 240);
+  --muted: oklch(0.95 0.005 80);
+  --muted-foreground: oklch(0.45 0.01 30);
   --accent: oklch(0.68 0.19 45);
-  --accent-foreground: oklch(0.1 0.01 30);
+  --accent-foreground: oklch(0.99 0.002 240);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0.002 240);
-  --border: oklch(0.28 0.01 30);
-  --input: oklch(0.28 0.01 30);
+  --border: oklch(0.88 0.01 30);
+  --input: oklch(0.88 0.01 30);
   --ring: oklch(0.68 0.19 45);
   --chart-1: oklch(0.1 0.01 30);
   --chart-2: oklch(0.68 0.19 45);
@@ -30,13 +30,13 @@
   --chart-4: oklch(0.75 0.16 50);
   --chart-5: oklch(0.25 0.02 35);
   --radius: 0.75rem;
-  --sidebar: oklch(0.15 0.01 30);
-  --sidebar-foreground: oklch(0.97 0.005 80);
+  --sidebar: oklch(0.98 0.005 80);
+  --sidebar-foreground: oklch(0.15 0.01 30);
   --sidebar-primary: oklch(0.68 0.19 45);
-  --sidebar-primary-foreground: oklch(0.1 0.01 30);
-  --sidebar-accent: oklch(0.22 0.01 30);
-  --sidebar-accent-foreground: oklch(0.97 0.005 80);
-  --sidebar-border: oklch(0.28 0.01 30);
+  --sidebar-primary-foreground: oklch(0.99 0.002 240);
+  --sidebar-accent: oklch(0.95 0.005 80);
+  --sidebar-accent-foreground: oklch(0.15 0.01 30);
+  --sidebar-border: oklch(0.88 0.01 30);
   --sidebar-ring: oklch(0.68 0.19 45);
 }
 
@@ -126,8 +126,8 @@
 }
 
 .bg-grid-pattern {
-  background-image: linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgb(0 0 0 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
