@@ -373,7 +373,7 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Book a Demo</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Book a Demo with a Fixr</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 See how Fixr can transform your service business with AI automation
               </p>
@@ -470,8 +470,8 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
             Stop losing revenue to missed calls
           </h2>
-          <p className="text-xl md:text-2xl mb-10 opacity-90 text-balance max-w-2xl mx-auto">
-            Join service businesses already automating with Fixr
+          <p className="text-xl md:text-2xl mb-10 opacity-90 whitespace-nowrap text-center">
+            Join the tradesmen that are automating their businesses with Fixr
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
