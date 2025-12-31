@@ -70,10 +70,15 @@ export default function Home() {
                 <Button
                   variant="outline"
                   className="text-base h-12 px-8 border-accent/50 text-foreground hover:bg-accent/10 hover:text-foreground hover:border-accent/70 hover:shadow-sm"
+                  onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })}
                 >
                   Learn more
                 </Button>
-                <Button size="lg" className="text-base h-12 px-8 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20">
+                <Button 
+                  size="lg" 
+                  className="text-base h-12 px-8 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20"
+                  onClick={() => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" })}
+                >
                   Book a Demo
                 </Button>
               </div>
