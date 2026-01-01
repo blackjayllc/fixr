@@ -129,13 +129,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-card">
+      <section className="py-24 bg-accent">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance text-foreground">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance text-accent-foreground">
               Your Digital Toolbox
             </h2>
-            <p className="text-xl text-muted-foreground leading-relaxed text-pretty max-w-3xl">
+            <p className="text-xl text-accent-foreground/90 leading-relaxed text-pretty max-w-3xl">
               From AI-powered call answering and professional websites to automated review requests and customer relationship
               management, Fixr replaces spreadsheets with intelligent automation that captures every revenue opportunity.
             </p>
