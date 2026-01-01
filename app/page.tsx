@@ -155,7 +155,7 @@ export default function Home() {
               <div className="p-8 bg-card">
                 <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Answer every call with AI</h3>
                 <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                  VoicePilot AI handles customer calls 24/7, answers questions, books appointments, and ensures no
+                  <strong>VoicePilot AI</strong> handles customer calls 24/7, answers questions, books appointments, and ensures no
                   revenue opportunity slips through the cracks.
                 </p>
                 <ul className="space-y-3">
@@ -178,7 +178,7 @@ export default function Home() {
               <div className="p-8 bg-white">
                 <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Modern websites that convert</h3>
                 <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                  WebPilot creates professional, mobile-optimized websites for your business with automated SEO, lead
+                  <strong>WebPilot</strong> creates professional, mobile-optimized websites for your business with automated SEO, lead
                   capture forms, and service showcase pages.
                 </p>
                 <ul className="space-y-3">
@@ -201,7 +201,7 @@ export default function Home() {
               <div className="p-8 bg-white">
                 <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Build your 5-star reputation</h3>
                 <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                  ReviewPilot automates Google review requests after every job, helping you build a strong online rating
+                  <strong>ReviewPilot</strong> automates Google review requests after every job, helping you build a strong online rating
                   that attracts more customers.
                 </p>
                 <ul className="space-y-3">
@@ -224,7 +224,7 @@ export default function Home() {
               <div className="p-8 bg-card">
                 <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Manage every customer relationship</h3>
                 <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                  ClientHub provides centralized CRM support for managing client data, communications, and engagement
+                  <strong>ClientHub</strong> provides centralized CRM support for managing client data, communications, and engagement
                   history to help your team nurture relationships.
                 </p>
                 <ul className="space-y-3">
