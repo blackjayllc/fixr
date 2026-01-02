@@ -37,7 +37,7 @@ const CALLS: Call[] = [
     id: "plumbing-quote",
     title: "High-intent inbound lead (missed call)",
     transcript: [
-      "Hi, !I found you on Google and I'm hoping you're available.",
+      "Hi, I found you on Google and I'm hoping you're available.",
       "I've got a leaking pipe under my kitchen sink and it's getting worse.",
       "I really need someone to take a look at it today.",
       "Please give me a call back as soon as you can. Thanks."
