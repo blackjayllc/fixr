@@ -172,22 +172,38 @@ function playAudio(src: string, audioRef: React.MutableRefObject<HTMLAudioElemen
     }
     
     const audio = new Audio(src)
+    audio.crossOrigin = "anonymous" // Allow CORS for Supabase URLs
     audioRef.current = audio
     
+    // Handle successful load and play
+    const handleCanPlay = () => {
+      audio.play().catch((e) => {
+        audioRef.current = null
+        console.error("Audio play failed:", e)
+        reject(e)
+      })
+    }
+    
+    // Handle when audio ends
     audio.onended = () => {
+      audio.removeEventListener("canplay", handleCanPlay)
       audioRef.current = null
       resolve()
     }
+    
+    // Handle errors
     audio.onerror = (e) => {
+      audio.removeEventListener("canplay", handleCanPlay)
       audioRef.current = null
-      console.error("Audio playback error:", e)
-      reject(e)
+      console.error("Audio playback error:", e, "Source:", src)
+      reject(new Error(`Failed to load audio from ${src}`))
     }
-    audio.play().catch((e) => {
-      audioRef.current = null
-      console.error("Audio play failed:", e)
-      reject(e)
-    })
+    
+    // Wait for audio to be ready before playing
+    audio.addEventListener("canplay", handleCanPlay, { once: true })
+    
+    // Start loading the audio
+    audio.load()
   })
 }
 
