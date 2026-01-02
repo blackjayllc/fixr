@@ -169,41 +169,65 @@ function playAudio(src: string, audioRef: React.MutableRefObject<HTMLAudioElemen
     if (audioRef.current) {
       audioRef.current.pause()
       audioRef.current.currentTime = 0
+      audioRef.current.src = "" // Clear previous source
     }
     
-    const audio = new Audio(src)
+    const audio = new Audio()
     audio.crossOrigin = "anonymous" // Allow CORS for Supabase URLs
+    audio.preload = "auto" // Preload for better Safari compatibility
     audioRef.current = audio
     
+    // Safari/iOS requires setting src after creating the element
+    audio.src = src
+    
     // Handle successful load and play
-    const handleCanPlay = () => {
-      audio.play().catch((e) => {
-        audioRef.current = null
-        console.error("Audio play failed:", e)
-        reject(e)
-      })
+    const handleCanPlayThrough = () => {
+      // For Safari, we need to play immediately when ready
+      const playPromise = audio.play()
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // Audio started playing successfully
+          })
+          .catch((e) => {
+            audioRef.current = null
+            console.error("Audio play failed:", e)
+            reject(e)
+          })
+      }
     }
     
     // Handle when audio ends
     audio.onended = () => {
-      audio.removeEventListener("canplay", handleCanPlay)
+      audio.removeEventListener("canplaythrough", handleCanPlayThrough)
       audioRef.current = null
       resolve()
     }
     
     // Handle errors
     audio.onerror = (e) => {
-      audio.removeEventListener("canplay", handleCanPlay)
+      audio.removeEventListener("canplaythrough", handleCanPlayThrough)
       audioRef.current = null
       console.error("Audio playback error:", e, "Source:", src)
       reject(new Error(`Failed to load audio from ${src}`))
     }
     
-    // Wait for audio to be ready before playing
-    audio.addEventListener("canplay", handleCanPlay, { once: true })
+    // Wait for audio to be fully ready (canplaythrough is better for Safari)
+    audio.addEventListener("canplaythrough", handleCanPlayThrough, { once: true })
     
     // Start loading the audio
     audio.load()
+    
+    // Fallback: if canplaythrough doesn't fire, try canplay
+    const handleCanPlay = () => {
+      const playPromise = audio.play()
+      if (playPromise !== undefined) {
+        playPromise.catch((e) => {
+          console.error("Audio play failed on canplay:", e)
+        })
+      }
+    }
+    audio.addEventListener("canplay", handleCanPlay, { once: true })
   })
 }
 
@@ -322,7 +346,25 @@ export function HeroCallDemo() {
 
     try {
       const { ctx, gain } = await ensureAudio()
-      if (ctx.state === "suspended") await ctx.resume()
+      if (ctx.state === "suspended") {
+        // Resume audio context immediately on user interaction (required for Safari/iOS)
+        await ctx.resume()
+      }
+      
+      // Preload all audio files immediately to capture user interaction context (Safari/iOS requirement)
+      const preloadPromises = CALLS.map((call) => {
+        if (!call.audioSrc) return Promise.resolve()
+        return new Promise<void>((resolve) => {
+          const preload = new Audio()
+          preload.crossOrigin = "anonymous"
+          preload.preload = "auto"
+          preload.src = call.audioSrc!
+          preload.addEventListener("canplaythrough", () => resolve(), { once: true })
+          preload.addEventListener("error", () => resolve(), { once: true }) // Don't block on errors
+          preload.load()
+        })
+      })
+      await Promise.all(preloadPromises)
 
       let runningTotal = 0
 
