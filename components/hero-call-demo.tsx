@@ -182,12 +182,15 @@ function playAudio(src: string, audioRef: React.MutableRefObject<HTMLAudioElemen
     audio.src = src
     
     let hasResolved = false
+    let playAttempted = false
     
     // Handle when audio ends
     audio.onended = () => {
-      hasResolved = true
-      audioRef.current = null
-      resolve()
+      if (!hasResolved) {
+        hasResolved = true
+        audioRef.current = null
+        resolve()
+      }
     }
     
     // Handle errors
@@ -195,55 +198,83 @@ function playAudio(src: string, audioRef: React.MutableRefObject<HTMLAudioElemen
       if (!hasResolved) {
         hasResolved = true
         audioRef.current = null
-        console.error("Audio playback error:", e, "Source:", src)
+        console.error("Audio playback error:", e, "Source:", src, "ReadyState:", audio.readyState, "NetworkState:", audio.networkState)
         reject(new Error(`Failed to load audio from ${src}`))
       }
     }
     
-    // Try to play immediately (audio is already unlocked)
+    // Try to play - more aggressive approach
     const tryPlay = () => {
+      if (playAttempted || hasResolved) return
+      playAttempted = true
+      
       const playPromise = audio.play()
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
             // Successfully started playing
+            console.log("Audio started playing:", src)
           })
           .catch((e) => {
             if (!hasResolved) {
               hasResolved = true
               audioRef.current = null
-              console.error("Audio play failed:", e, "Source:", src)
+              console.error("Audio play() rejected:", e, "Source:", src)
               reject(e)
             }
           })
+      } else {
+        // If play() returns undefined, it might have started
+        console.log("Audio play() returned undefined, assuming started:", src)
       }
     }
     
-    // Try playing when ready
-    if (audio.readyState >= 2) {
-      // Already loaded enough to play
-      tryPlay()
-    } else {
-      // Wait for enough data to play
-      const handleCanPlay = () => {
-        tryPlay()
-      }
-      const handleCanPlayThrough = () => {
-        tryPlay()
-      }
-      audio.addEventListener("canplay", handleCanPlay, { once: true })
-      audio.addEventListener("canplaythrough", handleCanPlayThrough, { once: true })
-      
-      // Also try playing after a short delay as fallback
-      setTimeout(() => {
-        if (!hasResolved && audio.readyState >= 1) {
+    // Try multiple strategies to get audio playing
+    const strategies = [
+      // Strategy 1: If already loaded, play immediately
+      () => {
+        if (audio.readyState >= 2) {
           tryPlay()
+          return true
         }
-      }, 100)
-      
-      // Start loading
-      audio.load()
+        return false
+      },
+      // Strategy 2: Wait for canplay
+      () => {
+        audio.addEventListener("canplay", () => {
+          if (!playAttempted) tryPlay()
+        }, { once: true })
+        return false
+      },
+      // Strategy 3: Wait for canplaythrough
+      () => {
+        audio.addEventListener("canplaythrough", () => {
+          if (!playAttempted) tryPlay()
+        }, { once: true })
+        return false
+      },
+      // Strategy 4: Fallback timeout
+      () => {
+        setTimeout(() => {
+          if (!playAttempted && !hasResolved && audio.readyState >= 1) {
+            console.log("Fallback: attempting to play audio:", src, "ReadyState:", audio.readyState)
+            tryPlay()
+          }
+        }, 500)
+        return false
+      }
+    ]
+    
+    // Try immediate play first
+    if (!strategies[0]()) {
+      // If not ready, set up event listeners and fallback
+      strategies[1]()
+      strategies[2]()
+      strategies[3]()
     }
+    
+    // Start loading
+    audio.load()
   })
 }
 
@@ -477,6 +508,27 @@ export function HeroCallDemo() {
               lineTimeouts.push(timeout)
               subtitleTimeoutsRef.current.push(timeout)
             }
+            
+            // Unlock this specific audio file for Safari/iOS (right before playing)
+            try {
+              const unlockAudio = new Audio(call.audioSrc)
+              unlockAudio.crossOrigin = "anonymous"
+              unlockAudio.volume = 0.01
+              const unlockPromise = unlockAudio.play()
+              if (unlockPromise) {
+                unlockPromise
+                  .then(() => {
+                    unlockAudio.pause()
+                    unlockAudio.currentTime = 0
+                  })
+                  .catch(() => {})
+              }
+            } catch (unlockErr) {
+              // Ignore unlock errors
+            }
+            
+            // Small delay to ensure unlock completes
+            await sleep(50, signal)
             
             // Play the actual audio
             let audioPlayed = false
