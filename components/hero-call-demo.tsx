@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Phone, PhoneOff, Volume2, BadgeDollarSign } from "lucide-react"
+import { Phone, PhoneOff, Volume2, BadgeDollarSign, RotateCw } from "lucide-react"
 
 type DemoState =
   | "idle"
@@ -576,7 +576,16 @@ export function HeroCallDemo() {
         </div>
 
         <div className="pt-2 flex flex-col sm:flex-row gap-2 sm:gap-2.5 lg:gap-3">
-          {state !== "done" ? (
+          {state === "idle" ? (
+            <Button
+              onClick={runDemo}
+              disabled={isPlaying}
+              className="h-9 sm:h-10 lg:h-11 bg-accent text-accent-foreground hover:bg-accent/90 text-sm sm:text-sm lg:text-base"
+            >
+              <Volume2 className="h-3.5 w-3.5 sm:h-3.5 sm:w-3.5 lg:h-4 lg:w-4 mr-1.5 sm:mr-2" />
+              {isPlaying ? "Playing…" : "Play missed calls"}
+            </Button>
+          ) : state !== "done" ? (
             <>
               <Button
                 onClick={runDemo}
@@ -614,11 +623,11 @@ export function HeroCallDemo() {
               <Button
                 type="button"
                 variant="outline"
-                onClick={reset}
+                onClick={runDemo}
                 className="h-9 sm:h-10 lg:h-11 border-accent/40 hover:bg-accent/10 text-sm sm:text-sm lg:text-base"
               >
-                <PhoneOff className="h-3.5 w-3.5 sm:h-3.5 sm:w-3.5 lg:h-4 lg:w-4 mr-1.5 sm:mr-2" />
-                Reset
+                <RotateCw className="h-3.5 w-3.5 sm:h-3.5 sm:w-3.5 lg:h-4 lg:w-4 mr-1.5 sm:mr-2" />
+                Listen again
               </Button>
             </>
           )}
