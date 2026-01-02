@@ -110,11 +110,11 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative">
-  <div className="aspect-square relative rounded-2xl overflow-hidden">
-    <HeroCallDemo />
-  </div>
-</div>
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none mx-auto">
+              <div className="relative rounded-2xl overflow-hidden w-full">
+                <HeroCallDemo />
+              </div>
+            </div>
           </div>
         </div>
       </section>
