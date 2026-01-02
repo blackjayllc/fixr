@@ -174,60 +174,66 @@ function playAudio(src: string, audioRef: React.MutableRefObject<HTMLAudioElemen
     
     const audio = new Audio()
     audio.crossOrigin = "anonymous" // Allow CORS for Supabase URLs
-    audio.preload = "auto" // Preload for better Safari compatibility
+    audio.preload = "auto"
+    audio.volume = 1.0 // Ensure volume is set
     audioRef.current = audio
     
-    // Safari/iOS requires setting src after creating the element
+    // Set source
     audio.src = src
     
-    // Handle successful load and play
-    const handleCanPlayThrough = () => {
-      // For Safari, we need to play immediately when ready
-      const playPromise = audio.play()
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            // Audio started playing successfully
-          })
-          .catch((e) => {
-            audioRef.current = null
-            console.error("Audio play failed:", e)
-            reject(e)
-          })
-      }
-    }
+    let hasResolved = false
     
     // Handle when audio ends
     audio.onended = () => {
-      audio.removeEventListener("canplaythrough", handleCanPlayThrough)
+      hasResolved = true
       audioRef.current = null
       resolve()
     }
     
     // Handle errors
     audio.onerror = (e) => {
-      audio.removeEventListener("canplaythrough", handleCanPlayThrough)
-      audioRef.current = null
-      console.error("Audio playback error:", e, "Source:", src)
-      reject(new Error(`Failed to load audio from ${src}`))
-    }
-    
-    // Wait for audio to be fully ready (canplaythrough is better for Safari)
-    audio.addEventListener("canplaythrough", handleCanPlayThrough, { once: true })
-    
-    // Start loading the audio
-    audio.load()
-    
-    // Fallback: if canplaythrough doesn't fire, try canplay
-    const handleCanPlay = () => {
-      const playPromise = audio.play()
-      if (playPromise !== undefined) {
-        playPromise.catch((e) => {
-          console.error("Audio play failed on canplay:", e)
-        })
+      if (!hasResolved) {
+        hasResolved = true
+        audioRef.current = null
+        console.error("Audio playback error:", e, "Source:", src)
+        reject(new Error(`Failed to load audio from ${src}`))
       }
     }
-    audio.addEventListener("canplay", handleCanPlay, { once: true })
+    
+    // Try to play immediately (audio is already unlocked)
+    const tryPlay = () => {
+      const playPromise = audio.play()
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // Successfully started playing
+          })
+          .catch((e) => {
+            if (!hasResolved) {
+              hasResolved = true
+              audioRef.current = null
+              console.error("Audio play failed:", e, "Source:", src)
+              reject(e)
+            }
+          })
+      }
+    }
+    
+    // Try playing when ready
+    if (audio.readyState >= 2) {
+      // Already loaded enough to play
+      tryPlay()
+    } else {
+      // Wait for enough data to play
+      const handleCanPlay = () => {
+        tryPlay()
+      }
+      audio.addEventListener("canplay", handleCanPlay, { once: true })
+      audio.addEventListener("canplaythrough", handleCanPlay, { once: true })
+      
+      // Start loading
+      audio.load()
+    }
   })
 }
 
@@ -351,20 +357,30 @@ export function HeroCallDemo() {
         await ctx.resume()
       }
       
-      // Preload all audio files immediately to capture user interaction context (Safari/iOS requirement)
-      const preloadPromises = CALLS.map((call) => {
-        if (!call.audioSrc) return Promise.resolve()
-        return new Promise<void>((resolve) => {
-          const preload = new Audio()
-          preload.crossOrigin = "anonymous"
-          preload.preload = "auto"
-          preload.src = call.audioSrc!
-          preload.addEventListener("canplaythrough", () => resolve(), { once: true })
-          preload.addEventListener("error", () => resolve(), { once: true }) // Don't block on errors
-          preload.load()
-        })
+      // Safari/iOS requires audio to be played immediately on user interaction to unlock
+      // We'll create and start playing (then pause) each audio to unlock them
+      const unlockPromises = CALLS.map(async (call) => {
+        if (!call.audioSrc) return
+        try {
+          const unlockAudio = new Audio(call.audioSrc)
+          unlockAudio.crossOrigin = "anonymous"
+          unlockAudio.volume = 0.01 // Very quiet but not silent (Safari needs actual playback)
+          unlockAudio.preload = "auto"
+          
+          // Start playing immediately to unlock (required for Safari/iOS)
+          const playPromise = unlockAudio.play()
+          if (playPromise) {
+            await playPromise
+            // Immediately pause after unlocking
+            unlockAudio.pause()
+            unlockAudio.currentTime = 0
+          }
+        } catch (e) {
+          // Ignore unlock errors, we'll try again when actually playing
+          console.warn("Audio unlock failed:", e)
+        }
       })
-      await Promise.all(preloadPromises)
+      await Promise.all(unlockPromises)
 
       let runningTotal = 0
 
