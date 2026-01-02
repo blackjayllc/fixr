@@ -358,29 +358,46 @@ export function HeroCallDemo() {
       }
       
       // Safari/iOS requires audio to be played immediately on user interaction to unlock
-      // We'll create and start playing (then pause) each audio to unlock them
-      const unlockPromises = CALLS.map(async (call) => {
-        if (!call.audioSrc) return
-        try {
-          const unlockAudio = new Audio(call.audioSrc)
-          unlockAudio.crossOrigin = "anonymous"
-          unlockAudio.volume = 0.01 // Very quiet but not silent (Safari needs actual playback)
-          unlockAudio.preload = "auto"
-          
-          // Start playing immediately to unlock (required for Safari/iOS)
-          const playPromise = unlockAudio.play()
-          if (playPromise) {
-            await playPromise
-            // Immediately pause after unlocking
+      // Create a single silent audio to unlock all audio playback (more reliable)
+      try {
+        // Use a data URL for a very short silent audio to unlock Safari
+        const silentAudio = new Audio("data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQQAAAAAAA==")
+        silentAudio.volume = 0
+        const unlockPromise = silentAudio.play()
+        if (unlockPromise) {
+          unlockPromise
+            .then(() => {
+              silentAudio.pause()
+              silentAudio.currentTime = 0
+            })
+            .catch(() => {})
+        }
+      } catch (e) {
+        // Fallback: unlock each audio file individually
+        for (const call of CALLS) {
+          if (!call.audioSrc) continue
+          try {
+            const unlockAudio = new Audio(call.audioSrc)
+            unlockAudio.crossOrigin = "anonymous"
+            unlockAudio.volume = 0
+            unlockAudio.preload = "none"
+            const playPromise = unlockAudio.play()
+            if (playPromise) {
+              playPromise
+                .then(() => {
+                  unlockAudio.pause()
+                  unlockAudio.currentTime = 0
+                })
+                .catch(() => {})
+            }
+            // Immediately pause without waiting
             unlockAudio.pause()
             unlockAudio.currentTime = 0
+          } catch (err) {
+            // Ignore errors
           }
-        } catch (e) {
-          // Ignore unlock errors, we'll try again when actually playing
-          console.warn("Audio unlock failed:", e)
         }
-      })
-      await Promise.all(unlockPromises)
+      }
 
       let runningTotal = 0
 
