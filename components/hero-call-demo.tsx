@@ -368,32 +368,42 @@ export function HeroCallDemo() {
       }
       
       // Safari/iOS requires audio to be played immediately on user interaction to unlock
-      // Create and play a silent unlock audio first, then unlock the actual audio files
-      try {
-        // First, unlock with a data URL silent audio
-        const silentUnlock = new Audio("data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQQAAAAAAA==")
-        silentUnlock.volume = 0
-        await silentUnlock.play()
-        silentUnlock.pause()
-        silentUnlock.currentTime = 0
-      } catch (e) {
-        // If silent unlock fails, try unlocking with the first actual audio file
-        if (CALLS[0]?.audioSrc) {
-          try {
-            const unlockAudio = new Audio(CALLS[0].audioSrc)
-            unlockAudio.crossOrigin = "anonymous"
-            unlockAudio.volume = 0.01
-            const playPromise = unlockAudio.play()
-            if (playPromise) {
-              await playPromise
-              unlockAudio.pause()
-              unlockAudio.currentTime = 0
-            }
-          } catch (unlockError) {
-            // Ignore unlock errors
+      // Unlock audio fire-and-forget (don't block demo start)
+      ;(async () => {
+        try {
+          // First, unlock with a data URL silent audio
+          const silentUnlock = new Audio("data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQQAAAAAAA==")
+          silentUnlock.volume = 0
+          const playPromise = silentUnlock.play()
+          if (playPromise) {
+            playPromise
+              .then(() => {
+                silentUnlock.pause()
+                silentUnlock.currentTime = 0
+              })
+              .catch(() => {
+                // If silent unlock fails, try unlocking with the first actual audio file
+                if (CALLS[0]?.audioSrc) {
+                  try {
+                    const unlockAudio = new Audio(CALLS[0].audioSrc)
+                    unlockAudio.crossOrigin = "anonymous"
+                    unlockAudio.volume = 0.01
+                    unlockAudio.play()
+                      .then(() => {
+                        unlockAudio.pause()
+                        unlockAudio.currentTime = 0
+                      })
+                      .catch(() => {})
+                  } catch (unlockError) {
+                    // Ignore unlock errors
+                  }
+                }
+              })
           }
+        } catch (e) {
+          // Ignore unlock errors - continue with demo
         }
-      }
+      })()
 
       let runningTotal = 0
 
