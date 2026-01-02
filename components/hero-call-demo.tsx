@@ -358,44 +358,28 @@ export function HeroCallDemo() {
       }
       
       // Safari/iOS requires audio to be played immediately on user interaction to unlock
-      // Create a single silent audio to unlock all audio playback (more reliable)
-      try {
-        // Use a data URL for a very short silent audio to unlock Safari
-        const silentAudio = new Audio("data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQQAAAAAAA==")
-        silentAudio.volume = 0
-        const unlockPromise = silentAudio.play()
-        if (unlockPromise) {
-          unlockPromise
-            .then(() => {
-              silentAudio.pause()
-              silentAudio.currentTime = 0
-            })
-            .catch(() => {})
-        }
-      } catch (e) {
-        // Fallback: unlock each audio file individually
-        for (const call of CALLS) {
-          if (!call.audioSrc) continue
-          try {
-            const unlockAudio = new Audio(call.audioSrc)
-            unlockAudio.crossOrigin = "anonymous"
-            unlockAudio.volume = 0
-            unlockAudio.preload = "none"
-            const playPromise = unlockAudio.play()
-            if (playPromise) {
-              playPromise
-                .then(() => {
+      // Unlock by playing the first audio file very briefly
+      if (CALLS[0]?.audioSrc) {
+        try {
+          const unlockAudio = new Audio(CALLS[0].audioSrc)
+          unlockAudio.crossOrigin = "anonymous"
+          unlockAudio.volume = 0.01
+          const playPromise = unlockAudio.play()
+          if (playPromise) {
+            playPromise
+              .then(() => {
+                // Pause immediately after starting (unlocks audio for Safari)
+                requestAnimationFrame(() => {
                   unlockAudio.pause()
                   unlockAudio.currentTime = 0
                 })
-                .catch(() => {})
-            }
-            // Immediately pause without waiting
-            unlockAudio.pause()
-            unlockAudio.currentTime = 0
-          } catch (err) {
-            // Ignore errors
+              })
+              .catch(() => {
+                // Ignore unlock errors - will try again when actually playing
+              })
           }
+        } catch (e) {
+          // Ignore unlock errors
         }
       }
 
@@ -428,25 +412,36 @@ export function HeroCallDemo() {
         if (call.audioSrc) {
           // Use audio file if available
           try {
+            // Show first line immediately
+            setLog((l) => [...l.slice(-3), `Caller: "${call.transcript[0]}"`])
+            
             // Preload audio to get duration for subtitle timing
             const preloadAudio = new Audio(call.audioSrc)
+            preloadAudio.crossOrigin = "anonymous"
             let audioDuration = 0
             
             await new Promise<void>((resolve) => {
-              preloadAudio.addEventListener('loadedmetadata', () => {
-                audioDuration = preloadAudio.duration
+              const timeout = setTimeout(() => {
+                // Fallback: estimate 2 seconds per line if metadata doesn't load
+                audioDuration = call.transcript.length * 2
                 resolve()
-              })
+              }, 2000)
+              
+              preloadAudio.addEventListener('loadedmetadata', () => {
+                clearTimeout(timeout)
+                audioDuration = preloadAudio.duration || call.transcript.length * 2
+                resolve()
+              }, { once: true })
+              
               preloadAudio.addEventListener('error', () => {
+                clearTimeout(timeout)
                 // If metadata fails, estimate 2 seconds per line
                 audioDuration = call.transcript.length * 2
                 resolve()
-              })
+              }, { once: true })
+              
               preloadAudio.load()
             })
-            
-            // Show first line immediately
-            setLog((l) => [...l.slice(-3), `Caller: "${call.transcript[0]}"`])
             
             // Calculate timing for each line (distribute evenly across duration)
             const lineDuration = audioDuration / call.transcript.length
@@ -461,24 +456,44 @@ export function HeroCallDemo() {
               subtitleTimeoutsRef.current.push(timeout)
             }
             
-            // Play the actual audio
-            await playAudio(call.audioSrc, currentAudioRef)
+            // Play the actual audio (with timeout to prevent blocking)
+            try {
+              await Promise.race([
+                playAudio(call.audioSrc, currentAudioRef),
+                new Promise<void>((resolve) => {
+                  setTimeout(() => {
+                    // If audio takes too long, show remaining subtitles and continue
+                    lineTimeouts.forEach(clearTimeout)
+                    if (call.transcript.length > 1) {
+                      setLog((l) => [...l.slice(-3), `Caller: "${call.transcript[call.transcript.length - 1]}"`])
+                    }
+                    resolve()
+                  }, audioDuration * 1000 + 1000) // Audio duration + 1 second buffer
+                })
+              ])
+            } catch (audioError) {
+              console.warn("Audio playback error:", audioError)
+              // Show remaining subtitles even if audio fails
+              lineTimeouts.forEach(clearTimeout)
+              if (call.transcript.length > 1) {
+                setLog((l) => [...l.slice(-3), `Caller: "${call.transcript[call.transcript.length - 1]}"`])
+              }
+            }
+            
             if (signal.aborted) return
             
-            // Clear any remaining timeouts (in case audio finished early)
+            // Clear any remaining timeouts
             lineTimeouts.forEach(clearTimeout)
-            // Remove cleared timeouts from ref
             subtitleTimeoutsRef.current = subtitleTimeoutsRef.current.filter(
               (t) => !lineTimeouts.includes(t)
             )
-            
-            // Ensure all lines are shown at the end
-            if (call.transcript.length > 1) {
-              setLog((l) => [...l.slice(-3), `Caller: "${call.transcript[call.transcript.length - 1]}"`])
-            }
           } catch (e) {
             // Fallback to text-to-speech if audio fails
             console.warn("Audio playback failed, using text-to-speech:", e)
+            // Show all transcript lines immediately
+            for (let i = 1; i < call.transcript.length; i++) {
+              setLog((l) => [...l.slice(-3), `Caller: "${call.transcript[i]}"`])
+            }
             await speak(
               call.transcript,
               (idx) => {
