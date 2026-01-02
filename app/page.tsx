@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Phone, Zap, Globe, Star, Users, ArrowRight, CheckCircle } from "lucide-react"
 import { toast } from "sonner"
+import { HeroCallDemo } from "@/components/hero-call-demo"
 
 export default function Home() {
   const [formData, setFormData] = useState({ name: "", email: "", company: "", phone: "", message: "" })
@@ -110,21 +111,10 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square relative rounded-2xl overflow-hidden border border-accent/20 bg-accent/5">
-                <Image
-                  src="/professional-hvac-technician-working-on-air-condit.jpg"
-                  alt="Professional service technician at work"
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 576px) 19vw, (max-width: 768px) 17vw, (max-width: 1024px) 13vw, 8vw"
-                  unoptimized={true}
-                  onError={(e) => {
-                    console.error("Image failed to load:", e)
-                  }}
-                />
-              </div>
-            </div>
+  <div className="aspect-square relative rounded-2xl overflow-hidden">
+    <HeroCallDemo />
+  </div>
+</div>
           </div>
         </div>
       </section>
