@@ -21,6 +21,13 @@ type Call = {
   audioSrc?: string
 }
 
+// Supabase audio URLs - update these with your actual Supabase storage URLs
+const AUDIO_URLS = {
+  call1: process.env.NEXT_PUBLIC_AUDIO_CALL_1 || "https://jyhcojsfbswocwxqbbvz.supabase.co/storage/v1/object/public/fixr-temp/call-1.mp3",
+  call2: process.env.NEXT_PUBLIC_AUDIO_CALL_2 || "https://jyhcojsfbswocwxqbbvz.supabase.co/storage/v1/object/public/fixr-temp/call-2.mp3",
+  call3: process.env.NEXT_PUBLIC_AUDIO_CALL_3 || "https://jyhcojsfbswocwxqbbvz.supabase.co/storage/v1/object/public/fixr-temp/call-3.mp3",
+}
+
 const CALLS: Call[] = [
   {
     id: "urgent-hvac",
@@ -31,7 +38,7 @@ const CALLS: Call[] = [
       "If you can come out this afternoon, call me back. Thanks.",
     ],
     lostValue: 450,
-    audioSrc: "/audio/call-1.mp3",
+    audioSrc: AUDIO_URLS.call1,
   },
   {
     id: "plumbing-quote",
@@ -43,7 +50,7 @@ const CALLS: Call[] = [
       "Please give me a call back as soon as you can. Thanks."
     ],
     lostValue: 275,
-    audioSrc: "/audio/call-2.mp3",
+    audioSrc: AUDIO_URLS.call2,
   },
   {
     id: "commercial-job",
@@ -54,7 +61,7 @@ const CALLS: Call[] = [
       "If you handle commercial jobs, please give me a call back today.",
     ],
     lostValue: 1200,
-    audioSrc: "/audio/call-3.mp3",
+    audioSrc: AUDIO_URLS.call3,
   },
 ]
 
