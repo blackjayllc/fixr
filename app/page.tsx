@@ -69,9 +69,9 @@ export default function Home() {
             <a href="#team" className="text-lg font-semibold hover:text-accent transition-colors">
               Team
             </a>
-            <a href="#demo" className="text-lg font-semibold hover:text-primary transition-colors">
+            <a href="#try-it-yourself" className="text-lg font-semibold hover:text-primary transition-colors">
               <Button size="lg" className="ml-2 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-md">
-                Book a Demo
+                Try the Demo
               </Button>
             </a>
           </nav>
@@ -105,72 +105,13 @@ export default function Home() {
                 <Button 
                   size="lg" 
                   className="text-base h-12 px-8 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20"
-                  onClick={() => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() => document.getElementById("try-it-yourself")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  Book a Demo
+                  Try the Demo
                 </Button>
               </div>
             </div>
-            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none mx-auto space-y-4">
-              {/* Phone Demo CTA */}
-              <Card className="p-4 sm:p-5 lg:p-6 bg-gradient-to-br from-accent/10 via-accent/5 to-background border-accent/30 shadow-lg">
-                <div className="flex flex-col gap-3 sm:gap-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
-                        <span className="text-xs sm:text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-                          Try It Yourself
-                        </span>
-                      </div>
-                      <a 
-                        href="tel:+14302029129" 
-                        className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground hover:text-accent transition-colors block"
-                        title="Call our live AI phone agent demo"
-                      >
-                        +1 (430) 202-9129
-                      </a>
-                      <p className="text-xs sm:text-sm text-muted-foreground mt-1.5 sm:mt-2 leading-relaxed">
-                        Call now to experience our AI receptionist in action. Available 24/7.
-                      </p>
-                    </div>
-                    <div className="relative group">
-                      <Info className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground cursor-help" />
-                      <div className="absolute right-0 top-6 sm:top-7 w-64 p-3 bg-popover border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 text-xs text-popover-foreground">
-                        This is a live demo AI phone agent ("Anna") that simulates a professional intake assistant for a Denver-based electrical contractor. No real appointments are booked—all scheduling is simulated for demonstration purposes.
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <button
-                    onClick={() => setShowCallDetails(!showCallDetails)}
-                    className="flex items-center justify-between w-full text-left text-xs sm:text-sm font-medium text-muted-foreground hover:text-foreground transition-colors pt-2 border-t border-border/50"
-                  >
-                    <span>What happens when you call?</span>
-                    <ChevronDown 
-                      className={`h-4 w-4 transition-transform duration-200 ${showCallDetails ? 'rotate-180' : ''}`}
-                    />
-                  </button>
-                  
-                  {showCallDetails && (
-                    <div className="pt-2 space-y-2 text-xs sm:text-sm text-muted-foreground animate-in slide-in-from-top-2 duration-200">
-                      <p className="font-semibold text-foreground mb-2">The demo agent will:</p>
-                      <ul className="space-y-1.5 pl-4 list-disc">
-                        <li>Answer in a natural, human-like voice 24/7</li>
-                        <li>Ask structured questions to understand your issue</li>
-                        <li>Collect key details (name, phone, address, issue, urgency)</li>
-                        <li>Identify potentially dangerous situations and respond calmly</li>
-                        <li>Simulate scheduling and callback expectations</li>
-                        <li>Demonstrate how a clean, structured lead would be created</li>
-                      </ul>
-                      <p className="pt-2 border-t border-border/30 italic">
-                        If you're impressed and ask about using the system, the agent can collect your business contact information so our team can follow up.
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </Card>
-              
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none mx-auto">
               <div className="relative rounded-2xl overflow-hidden w-full">
                 <HeroCallDemo />
               </div>
@@ -297,6 +238,70 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Try It Yourself Section */}
+      <section id="try-it-yourself" className="py-24 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <Card className="p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-accent/10 via-accent/5 to-background border-accent/30 shadow-lg">
+              <div className="flex flex-col gap-4 sm:gap-5">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Phone className="h-5 w-5 sm:h-6 sm:w-6 text-accent" />
+                      <span className="text-sm sm:text-base font-semibold text-muted-foreground uppercase tracking-wide">
+                        Try It Yourself
+                      </span>
+                    </div>
+                    <a 
+                      href="tel:+14302029129" 
+                      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground hover:text-accent transition-colors block mb-3"
+                      title="Call our live AI phone agent demo"
+                    >
+                      +1 (430) 202-9129
+                    </a>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      Call now to experience our AI receptionist in action. Available 24/7.
+                    </p>
+                  </div>
+                  <div className="relative group">
+                    <Info className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground cursor-help" />
+                    <div className="absolute right-0 top-7 sm:top-8 w-72 p-3 bg-popover border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 text-xs sm:text-sm text-popover-foreground">
+                      This is a live demo AI phone agent ("Anna") that simulates a professional intake assistant for a Denver-based electrical contractor. No real appointments are booked—all scheduling is simulated for demonstration purposes.
+                    </div>
+                  </div>
+                </div>
+                
+                <button
+                  onClick={() => setShowCallDetails(!showCallDetails)}
+                  className="flex items-center justify-between w-full text-left text-sm sm:text-base font-medium text-muted-foreground hover:text-foreground transition-colors pt-3 border-t border-border/50"
+                >
+                  <span>What happens when you call?</span>
+                  <ChevronDown 
+                    className={`h-5 w-5 transition-transform duration-200 ${showCallDetails ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                
+                {showCallDetails && (
+                  <div className="pt-3 space-y-3 text-sm sm:text-base text-muted-foreground animate-in slide-in-from-top-2 duration-200">
+                    <p className="font-semibold text-foreground mb-3">The demo agent will:</p>
+                    <ul className="space-y-2 pl-5 list-disc">
+                      <li>Answer in a natural, human-like voice 24/7</li>
+                      <li>Ask structured questions to understand your issue</li>
+                      <li>Collect key details (name, phone, address, issue, urgency)</li>
+                      <li>Identify potentially dangerous situations and respond calmly</li>
+                      <li>Simulate scheduling and callback expectations</li>
+                      <li>Demonstrate how a clean, structured lead would be created</li>
+                    </ul>
+                    <p className="pt-3 border-t border-border/30 italic">
+                      If you're impressed and ask about using the system, the agent can collect your business contact information so our team can follow up.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       {/* Results Section */}
       <section className="py-24 bg-card">

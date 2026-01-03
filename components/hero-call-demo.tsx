@@ -843,14 +843,14 @@ export function HeroCallDemo() {
             <>
               <Button
                 onClick={() => {
-                  const demoSection = document.getElementById("demo")
-                  if (demoSection) {
-                    demoSection.scrollIntoView({ behavior: "smooth" })
+                  const tryItSection = document.getElementById("try-it-yourself")
+                  if (tryItSection) {
+                    tryItSection.scrollIntoView({ behavior: "smooth" })
                   }
                 }}
                 className="h-9 sm:h-10 lg:h-11 bg-accent text-accent-foreground hover:bg-accent/90 flex-1 text-sm sm:text-sm lg:text-base"
               >
-                See how Fixr handles this →
+                Try it yourself →
               </Button>
 
               <Button
