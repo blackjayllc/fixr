@@ -13,12 +13,31 @@ export const metadata: Metadata = {
   title: "Fixr Solutions - Blue Collar Automation Starts Here",
   description:
     "AI-powered automation for HVAC, plumbing, electrical, and contracting businesses. Automate calls, scheduling, invoicing, and follow-ups.",
-  generator: "v0.app",
   keywords:
     "HVAC software, plumbing automation, electrical business tools, contractor CRM, service business automation",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-icon.png",
+  },
+  openGraph: {
+    title: "Fixr Solutions - Blue Collar Automation Starts Here",
+    description:
+      "AI-powered automation for HVAC, plumbing, electrical, and contracting businesses. Automate calls, scheduling, invoicing, and follow-ups.",
+    images: [
+      {
+        url: "/FIXR Full Black Logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Fixr Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fixr Solutions - Blue Collar Automation Starts Here",
+    description:
+      "AI-powered automation for HVAC, plumbing, electrical, and contracting businesses. Automate calls, scheduling, invoicing, and follow-ups.",
+    images: ["/FIXR Full Black Logo.png"],
   },
 }
 
