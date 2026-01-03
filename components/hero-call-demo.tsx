@@ -813,7 +813,7 @@ export function HeroCallDemo() {
             <Button
               onClick={runDemo}
               disabled={isPlaying}
-              className="h-9 sm:h-10 lg:h-11 bg-accent text-accent-foreground hover:bg-accent/90 text-sm sm:text-sm lg:text-base"
+              className="h-9 sm:h-10 lg:h-11 bg-accent text-accent-foreground hover:bg-accent/90 text-sm sm:text-sm lg:text-base cursor-pointer disabled:cursor-not-allowed"
             >
               <Volume2 className="h-3.5 w-3.5 sm:h-3.5 sm:w-3.5 lg:h-4 lg:w-4 mr-1.5 sm:mr-2" />
               {isPlaying ? "Playing…" : "Play missed calls"}
@@ -823,7 +823,7 @@ export function HeroCallDemo() {
               <Button
                 onClick={runDemo}
                 disabled={isPlaying}
-                className="h-9 sm:h-10 lg:h-11 bg-accent text-accent-foreground hover:bg-accent/90 text-sm sm:text-sm lg:text-base"
+                className="h-9 sm:h-10 lg:h-11 bg-accent text-accent-foreground hover:bg-accent/90 text-sm sm:text-sm lg:text-base cursor-pointer disabled:cursor-not-allowed"
               >
                 <Volume2 className="h-3.5 w-3.5 sm:h-3.5 sm:w-3.5 lg:h-4 lg:w-4 mr-1.5 sm:mr-2" />
                 {isPlaying ? "Playing…" : "Play missed calls"}
@@ -833,7 +833,7 @@ export function HeroCallDemo() {
                 type="button"
                 variant="outline"
                 onClick={reset}
-                className="h-9 sm:h-10 lg:h-11 border-accent/40 hover:bg-accent/10 text-sm sm:text-sm lg:text-base"
+                className="h-9 sm:h-10 lg:h-11 border-accent/40 hover:bg-accent/10 text-sm sm:text-sm lg:text-base cursor-pointer"
               >
                 <PhoneOff className="h-3.5 w-3.5 sm:h-3.5 sm:w-3.5 lg:h-4 lg:w-4 mr-1.5 sm:mr-2" />
                 Reset
@@ -848,7 +848,7 @@ export function HeroCallDemo() {
                     tryItSection.scrollIntoView({ behavior: "smooth" })
                   }
                 }}
-                className="h-9 sm:h-10 lg:h-11 bg-accent text-accent-foreground hover:bg-accent/90 flex-1 text-sm sm:text-sm lg:text-base"
+                className="h-9 sm:h-10 lg:h-11 bg-accent text-accent-foreground hover:bg-accent/90 flex-1 text-sm sm:text-sm lg:text-base cursor-pointer"
               >
                 Try it yourself →
               </Button>
@@ -857,7 +857,7 @@ export function HeroCallDemo() {
                 type="button"
                 variant="outline"
                 onClick={runDemo}
-                className="h-9 sm:h-10 lg:h-11 border-accent/40 hover:bg-accent/10 text-sm sm:text-sm lg:text-base"
+                className="h-9 sm:h-10 lg:h-11 border-accent/40 hover:bg-accent/10 text-sm sm:text-sm lg:text-base cursor-pointer"
               >
                 <RotateCw className="h-3.5 w-3.5 sm:h-3.5 sm:w-3.5 lg:h-4 lg:w-4 mr-1.5 sm:mr-2" />
                 Listen again

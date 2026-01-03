@@ -63,17 +63,25 @@ export default function Home() {
             />
           </Link>
           <nav className="hidden md:flex items-center gap-12">
-            <a href="#products" className="text-lg font-semibold hover:text-accent transition-colors">
+            <button 
+              onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })}
+              className="text-lg font-semibold hover:text-accent transition-colors cursor-pointer"
+            >
               Products
-            </a>
-            <a href="#team" className="text-lg font-semibold hover:text-accent transition-colors">
+            </button>
+            <button 
+              onClick={() => document.getElementById("team")?.scrollIntoView({ behavior: "smooth" })}
+              className="text-lg font-semibold hover:text-accent transition-colors cursor-pointer"
+            >
               Team
-            </a>
-            <a href="#try-it-yourself" className="text-lg font-semibold hover:text-primary transition-colors">
-              <Button size="lg" className="ml-2 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-md">
-                Try the Demo
-              </Button>
-            </a>
+            </button>
+            <Button 
+              size="lg" 
+              className="ml-2 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-md cursor-pointer"
+              onClick={() => document.getElementById("try-it-yourself")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              Try the Demo
+            </Button>
           </nav>
         </div>
       </header>
@@ -97,14 +105,14 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
                 <Button
                   variant="outline"
-                  className="text-base h-12 px-8 border-accent/50 text-foreground hover:bg-accent/10 hover:text-foreground hover:border-accent/70 hover:shadow-sm"
+                  className="text-base h-12 px-8 border-accent/50 text-foreground hover:bg-accent/10 hover:text-foreground hover:border-accent/70 hover:shadow-sm cursor-pointer"
                   onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })}
                 >
                   Learn more
                 </Button>
                 <Button 
                   size="lg" 
-                  className="text-base h-12 px-8 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20"
+                  className="text-base h-12 px-8 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20 cursor-pointer"
                   onClick={() => document.getElementById("try-it-yourself")?.scrollIntoView({ behavior: "smooth" })}
                 >
                   Try the Demo
@@ -254,7 +262,7 @@ export default function Home() {
                     </div>
                     <a 
                       href="tel:+14302029129" 
-                      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground hover:text-accent transition-colors block mb-3"
+                      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground hover:text-accent transition-colors block mb-3 cursor-pointer"
                       title="Call our live AI phone agent demo"
                     >
                       +1 (430) 202-9129
@@ -273,7 +281,7 @@ export default function Home() {
                 
                 <button
                   onClick={() => setShowCallDetails(!showCallDetails)}
-                  className="flex items-center justify-between w-full text-left text-sm sm:text-base font-medium text-muted-foreground hover:text-foreground transition-colors pt-3 border-t border-border/50"
+                  className="flex items-center justify-between w-full text-left text-sm sm:text-base font-medium text-muted-foreground hover:text-foreground transition-colors pt-3 border-t border-border/50 cursor-pointer"
                 >
                   <span>What happens when you call?</span>
                   <ChevronDown 
@@ -540,7 +548,7 @@ export default function Home() {
                   type="submit"
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full h-12 text-base font-semibold bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25 group disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full h-12 text-base font-semibold bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25 group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Request Consultation'}
                   {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1" />}
@@ -564,7 +572,7 @@ export default function Home() {
             <Button
               size="lg"
               variant="secondary"
-              className="text-base h-12 px-8 bg-background text-foreground hover:bg-background/90 hover:shadow-lg group"
+              className="text-base h-12 px-8 bg-background text-foreground hover:bg-background/90 hover:shadow-lg group cursor-pointer"
               onClick={() => document.getElementById("try-it-yourself")?.scrollIntoView({ behavior: "smooth" })}
             >
               Try the Demo
@@ -573,7 +581,7 @@ export default function Home() {
             <Button
               size="lg"
               variant="outline"
-              className="text-base h-12 px-8 bg-transparent border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10 hover:border-accent-foreground/50 hover:shadow-sm"
+              className="text-base h-12 px-8 bg-transparent border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10 hover:border-accent-foreground/50 hover:shadow-sm cursor-pointer"
               onClick={() => document.getElementById("consultation")?.scrollIntoView({ behavior: "smooth" })}
             >
               Book a Consultation
