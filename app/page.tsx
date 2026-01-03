@@ -37,7 +37,7 @@ export default function Home() {
         throw new Error(data.error || 'Failed to send message')
       }
 
-      toast.success("Demo request sent successfully! We'll be in touch soon.")
+      toast.success("Consultation request sent successfully! We'll be in touch soon.")
       // Reset form
       setFormData({ name: "", email: "", company: "", phone: "", message: "" })
     } catch (error) {
@@ -454,14 +454,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Book a Demo Section */}
-      <section id="demo" className="py-24 bg-card">
+      {/* Consultation Section */}
+      <section id="consultation" className="py-24 bg-card">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Book a Demo with a Fixr</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Book a Consultation with Fixr</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                See how Fixr can transform your service business with AI automation
+                See how Fixr can transform your business with AI automation
               </p>
             </div>
             <Card className="p-8 md:p-10 bg-background border-border shadow-lg">
@@ -542,7 +542,7 @@ export default function Home() {
                   disabled={isSubmitting}
                   className="w-full h-12 text-base font-semibold bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25 group disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Sending...' : 'Request Demo'}
+                  {isSubmitting ? 'Sending...' : 'Request Consultation'}
                   {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1" />}
                 </Button>
               </form>
@@ -565,18 +565,18 @@ export default function Home() {
               size="lg"
               variant="secondary"
               className="text-base h-12 px-8 bg-background text-foreground hover:bg-background/90 hover:shadow-lg group"
-              onClick={() => document.getElementById("demo")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => document.getElementById("try-it-yourself")?.scrollIntoView({ behavior: "smooth" })}
             >
-              Book a Demo
+              Try the Demo
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1" />
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="text-base h-12 px-8 bg-transparent border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10 hover:border-accent-foreground/50 hover:shadow-sm"
-              onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => document.getElementById("consultation")?.scrollIntoView({ behavior: "smooth" })}
             >
-              Learn more
+              Book a Consultation
             </Button>
           </div>
         </div>
