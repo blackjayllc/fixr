@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Phone, Zap, Globe, Star, Users, ArrowRight, CheckCircle, ChevronDown, Info } from "lucide-react"
 import { toast } from "sonner"
 import { HeroCallDemo } from "@/components/hero-call-demo"
+import { Navbar } from "@/components/navbar"
 
 export default function Home() {
   const [formData, setFormData] = useState({ name: "", email: "", company: "", phone: "", message: "" })
@@ -51,40 +52,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto px-6 h-32 flex items-center justify-center md:justify-between">
-          <Link href="/" className="flex items-center gap-3 translate-x-10 md:translate-x-0">
-            <Image
-              src="/FIXR Full Black Logo.png"
-              alt="Fixr Logo"
-              width={360}
-              height={90}
-              unoptimized={true}
-            />
-          </Link>
-          <nav className="hidden md:flex items-center gap-12">
-            <button 
-              onClick={() => document.getElementById("products")?.scrollIntoView({ behavior: "smooth" })}
-              className="text-lg font-semibold hover:text-accent transition-colors cursor-pointer"
-            >
-              Products
-            </button>
-            <button 
-              onClick={() => document.getElementById("team")?.scrollIntoView({ behavior: "smooth" })}
-              className="text-lg font-semibold hover:text-accent transition-colors cursor-pointer"
-            >
-              Team
-            </button>
-            <Button 
-              size="lg" 
-              className="ml-2 bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-md cursor-pointer"
-              onClick={() => document.getElementById("try-it-yourself")?.scrollIntoView({ behavior: "smooth" })}
-            >
-              Try the Demo
-            </Button>
-          </nav>
-        </div>
-      </header>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-background">
