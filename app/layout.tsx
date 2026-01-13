@@ -10,6 +10,7 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://fixrsolutions.com'),
   title: "Fixr Solutions - Blue Collar Automation Starts Here",
   description:
     "AI-powered automation for HVAC, plumbing, electrical, and contracting businesses. Automate calls, scheduling, invoicing, and follow-ups.",
