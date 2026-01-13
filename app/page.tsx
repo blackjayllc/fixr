@@ -562,7 +562,7 @@ export default function Home() {
       <footer className="py-12 border-t border-border bg-card">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <Link href="/" className="flex items-center gap-3 ml-8 md:ml-0">
+            <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/FIXR Full Black Logo.png"
                 alt="Fixr Logo"

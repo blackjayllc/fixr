@@ -8,12 +8,12 @@ export function Navbar() {
   return (
     <header className="border-b border-border bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto px-6 h-32 flex items-center justify-center md:justify-between">
-        <Link href="/" className="flex items-center gap-3 translate-x-10 md:translate-x-0">
+        <Link href="/" className="flex items-center gap-3">
           <Image
             src="/FIXR Full Black Logo.png"
             alt="Fixr Logo"
-            width={360}
-            height={90}
+            width={234}
+            height={59}
             unoptimized={true}
           />
         </Link>
