@@ -16,10 +16,6 @@ export const metadata: Metadata = {
     "AI-powered automation for HVAC, plumbing, electrical, and contracting businesses. Automate calls, scheduling, invoicing, and follow-ups.",
   keywords:
     "HVAC software, plumbing automation, electrical business tools, contractor CRM, service business automation",
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-icon.png",
-  },
   openGraph: {
     title: "Fixr Solutions - Blue Collar Automation Starts Here",
     description:
